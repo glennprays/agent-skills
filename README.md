@@ -1,9 +1,11 @@
 # Agent Skills
 <p align="center">
-  <img src="assets/banner.svg" alt="agent-skills — reusable skills for coding agents" width="640">
+  <img src="assets/logo.svg" alt="Agent Skills — a raven carrying a seed of reusable knowledge" width="160" height="160">
 </p>
 
 A collection of reusable workflows for coding agents. Each skill lives at `skills/<name>/SKILL.md` and can be installed individually.
+
+The Craft Raven carries a seed of reusable knowledge: agents bring capability; skills bring practiced judgment.
 
 | Skill | When to use it |
 |---|---|
@@ -11,24 +13,80 @@ A collection of reusable workflows for coding agents. Each skill lives at `skill
 
 ## Install
 
-Use Node.js 22.20 or later. For a private repository, run the installer on a machine with read access through Git credentials, GitHub CLI, or SSH. From the consumer project, run:
+Prerequisites: Node.js 22.20 or later. Run the installer from the root of the consumer project, on a machine with read access to this private repository through Git credentials, the GitHub CLI, or SSH. To see what is available without installing anything:
 
 ~~~sh
-npx skills add glennprays/agent-skills --list
-npx skills add glennprays/agent-skills --skill design-ui-first -a codex
+npx --yes skills add glennprays/agent-skills --list
 ~~~
 
-The Codex target installs to `.agents/skills/` in the project. OMP also scans this directory when project discovery is enabled. For access across projects on the same machine, use the global scope:
+### Claude Code
 
 ~~~sh
-npx skills add glennprays/agent-skills --skill design-ui-first -a codex -g
+npx --yes skills add glennprays/agent-skills --skill design-ui-first -a claude-code -y
 ~~~
 
-Global installation uses `~/.agents/skills/`. Open a fresh OMP session and try:
+Installs to `.claude/skills/` in the project.
 
-> Use design-ui-first to design a family search screen. Show me two options before implementation.
+### OMP (Oh My Pi)
 
-For Hermes or Kiro CLI, select `-a hermes-agent` or `-a kiro-cli` on the machine where the agent runs.
+~~~sh
+npx --yes skills add glennprays/agent-skills --skill design-ui-first -a codex -y
+~~~
+
+The `codex` target deliberately selects the shared `.agents/skills/` project directory, not the Codex application. OMP discovers skills installed there when `skills.enableAgentsProject: true`. Restart OMP in the consumer project, then ask it to read `skill://design-ui-first` and report the resolved file path — depending on the OMP version it may resolve the skill file itself or the `SKILL.md` inside it.
+
+### Codex
+
+~~~sh
+npx --yes skills add glennprays/agent-skills --skill design-ui-first -a codex -y
+~~~
+
+Installs to `.agents/skills/` in the project.
+
+### OpenCode
+
+~~~sh
+npx --yes skills add glennprays/agent-skills --skill design-ui-first -a opencode -y
+~~~
+
+Installs to `.agents/skills/` in the project.
+
+### Other agents
+
+| Agent | Project install command | Project discovery root |
+|---|---|---|
+| Cursor | `npx --yes skills add glennprays/agent-skills --skill design-ui-first -a cursor -y` | `.agents/skills/` |
+| Gemini CLI | `npx --yes skills add glennprays/agent-skills --skill design-ui-first -a gemini-cli -y` | `.agents/skills/` |
+| Hermes | `npx --yes skills add glennprays/agent-skills --skill design-ui-first -a hermes-agent -y` | `.hermes/skills/` |
+| Kiro CLI | `npx --yes skills add glennprays/agent-skills --skill design-ui-first -a kiro-cli -y` | `.kiro/skills/` |
+
+For further supported agents, see the [installer's agent registry](https://github.com/vercel-labs/skills/blob/main/docs/agents.md).
+
+### Multiple agents and global installs
+
+Repeat `-a` to install for several agents in one run:
+
+~~~sh
+npx --yes skills add glennprays/agent-skills --skill design-ui-first -a claude-code -a codex -a opencode -y
+~~~
+
+Project scope is the default. Agents that share `.agents/skills/` share the installed skill; the command above also makes the skill discoverable to Claude Code under `.claude/skills/` (the installer may copy or link the files).
+
+For access across projects on the same machine, add `-g`:
+
+~~~sh
+npx --yes skills add glennprays/agent-skills --skill design-ui-first -a claude-code -g -y
+~~~
+
+This installs to the user root, `~/.claude/skills/` for Claude Code (configured Claude home overrides apply); each agent has its own user root — see the [supported-agent docs](https://github.com/vercel-labs/skills/blob/main/docs/agents.md). For OMP, prefer the project instructions above: a global `.agents/skills` alone does not guarantee discovery, because foreign user providers are opt-in via `enabledProviders` ([OMP discovery docs](https://github.com/can1357/oh-my-pi/blob/main/docs/skills.md)).
+
+### Try it
+
+Restart or reopen the chosen agent in the consumer project, then try:
+
+> Use design-ui-first to explore two request inspector layouts. Show me the options before implementation.
+
+Installing the files does not guarantee every agent or model follows the workflow identically.
 
 ## Add or update a skill
 
@@ -45,4 +103,4 @@ Discover new skills with `--list` and install them with `--skill <name>`. Teams 
 
 ## References
 
-[Agent Skills specification](https://agentskills.io/specification) · [Vercel Skills CLI](https://github.com/vercel-labs/skills) · [OMP skill discovery](https://github.com/can1357/oh-my-pi/blob/main/docs/skills.md)
+[Agent Skills specification](https://agentskills.io/specification) · [Vercel Skills CLI](https://github.com/vercel-labs/skills) · [Skills CLI reference](https://github.com/vercel-labs/skills/blob/main/docs/commands.md) · [OMP skill discovery](https://github.com/can1357/oh-my-pi/blob/main/docs/skills.md)

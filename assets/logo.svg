@@ -1,23 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="agent-skills logo">
-  <defs>
-    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#1C1F26"/>
-      <stop offset="1" stop-color="#14161C"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="0.5" cy="0.62" r="0.55">
-      <stop offset="0" stop-color="#E8A33D" stop-opacity="0.16"/>
-      <stop offset="1" stop-color="#E8A33D" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect x="16" y="16" width="480" height="480" rx="100" fill="url(#tile)" stroke="#2A2E37" stroke-width="2"/>
-  <rect x="36" y="36" width="440" height="440" rx="84" fill="url(#glow)"/>
-  <rect x="146" y="128" width="14" height="26" rx="5" fill="#3A3F4B"/>
-  <rect x="180" y="128" width="14" height="26" rx="5" fill="#3A3F4B"/>
-  <rect x="214" y="128" width="14" height="26" rx="5" fill="#3A3F4B"/>
-  <rect x="118" y="152" width="152" height="152" rx="30" fill="#232732" stroke="#3A3F4B" stroke-width="2.5"/>
-  <rect x="242" y="152" width="152" height="152" rx="30" fill="#232732" stroke="#3A3F4B" stroke-width="2.5"/>
-  <rect x="180" y="244" width="152" height="152" rx="30" fill="#E8A33D" stroke="#F2C063" stroke-width="2.5"/>
-  <rect x="212" y="286" width="88" height="14" rx="7" fill="#C77F1F"/>
-  <circle cx="316" cy="293" r="7" fill="#C77F1F"/>
-  <path d="M256 304 v72" stroke="#C77F1F" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Agent Skills — Craft Raven</title>
+  <desc id="desc">A resourceful raven carrying an amber seed: learned judgment travels with the agent.</desc>
+  <circle cx="256" cy="256" r="240" fill="#F5F2EA"/>
+  <path fill="#1C1F26" d="M82 390 133 285 171 251 192 181 233 139 278 129 314 145 333 177 402 199 339 218 318 258 305 316 273 355 233 367 201 405 202 365 164 386 177 346Z"/>
+  <path fill="#F5F2EA" d="M157 306 266 231 233 289 193 326Z"/>
+  <circle cx="292" cy="174" r="8" fill="#F5F2EA"/>
+  <path fill="#E8A33D" d="M416 213C445 230 442 259 416 272C390 259 387 230 416 213Z"/>
 </svg>
