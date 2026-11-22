@@ -1,0 +1,32 @@
+# Stable Project Memory — versioned source of truth
+
+<!--
+Maintenance rules:
+- Update ONLY when a stable fact changes: mission, stack pins, invariants, boundaries, documentation map.
+- A stable-invariant change requires an ADR (docs/decisions/) plus an update here in the same PR.
+- Current status belongs in CURRENT_STATE.md; active work in TASKS.md; ephemeral notes in SESSION_HANDOFF.md. Never migrate those into this file.
+- Never overwrite historical ADRs to hide earlier decisions.
+-->
+
+## Mission
+{{MISSION}}
+<!-- One sentence: what this repo does and for whom. TODO: confirm during setup interview if not derivable. -->
+
+## Why it exists
+{{WHY_IT_EXISTS}}
+<!-- The problem this repo solves. TODO: fill from README or interview. -->
+
+## Stack
+{{STACK_LIST}}
+<!-- One bullet per detected stack with pinned versions from manifests/lockfiles. TODO: pin exact versions. -->
+
+## Key invariants
+{{INVARIANTS}}
+<!-- Rules that must never silently change (data guarantees, security posture, architectural shape). Start with none known if unsure. -->
+
+## Not yet decided
+See `docs/decisions/OPEN_DECISIONS.md`.
+
+## Documentation map
+{{DOCS_MAP}}
+<!-- Which doc tiers exist and what lives where, e.g. "Product: docs/product/*; ADRs: docs/decisions/*". Reflects only approved tiers. -->

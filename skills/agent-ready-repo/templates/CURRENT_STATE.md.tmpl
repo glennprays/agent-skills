@@ -1,0 +1,27 @@
+# Current State — update every session
+
+<!--
+Maintenance rules:
+- Update at the END of every session that changed anything.
+- Last-verified stamp must carry actual command outputs (branch, HEAD SHA, test summary), never a bare date.
+- Never record plans as completed work; DONE requires evidence in TASKS.md.
+- If git reality contradicts this file at session start, reconcile (fix or flag) before proceeding.
+-->
+
+Last verified: {{TODAY}} — {{GIT_BRANCH}} @ {{HEAD_SHA}} (stamp from actual `git branch` / `git log` output).
+
+## Branch/release
+- {{BRANCH_STATUS}}
+<!-- Active branches, protected branches, open PRs, latest tag. TODO: fill from git. -->
+
+## Verified artifacts
+{{VERIFIED_ARTIFACTS}}
+<!-- What was actually built/tested, with the command and its observed result. Empty list = nothing verified yet. -->
+
+## Next exact actions
+{{NEXT_ACTIONS}}
+<!-- Numbered, each one session-sized and actionable. -->
+
+## Known risks
+{{KNOWN_RISKS}}
+<!-- Live threats: blocked pins, deferred work, fragile areas. Empty = none known. -->

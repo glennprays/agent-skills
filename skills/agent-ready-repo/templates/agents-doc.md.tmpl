@@ -1,0 +1,27 @@
+# {{NN}}. Agentic Memory & Orchestration
+
+<!--
+This document describes the agent system itself — the memory layers, update cadence, and
+grounding rituals other agents must follow. Adapted from the repo's AGENTS.md; keep the two
+consistent: if the constitution changes, change this file in the same PR.
+-->
+
+## Memory layers
+1. **Constitution (stable):** `AGENTS.md` — non-negotiable behaviors, workflow, boundaries. Update infrequently, with review.
+2. **Architecture memory:** `.agent/PROJECT_MEMORY.md` + ADRs in `docs/decisions/` — intent, constraints, invariants, decisions.
+3. **Current state (mutable):** `.agent/CURRENT_STATE.md` — verified branch, HEAD, verified artifacts, next actions, risks. Updated every session.
+4. **Task memory (mutable):** `.agent/TASKS.md` — thin single-source status index; per-task detail and evidence in lazy-created `.agent/tasks/<ID>.md`; settled DONE rows batch into `.agent/tasks/archive/`.
+5. **Session handoff (ephemeral):** `.agent/SESSION_HANDOFF.md` — exact files/commits/tests of the latest session; overwritten per session.
+6. **Code as truth:** git history, tests, and source override stale prose. Reconcile memory against repo state; git wins.
+
+## Session resume protocol
+A new session must: read `AGENTS.md`, then the `.agent/` files in order, then `docs/decisions/OPEN_DECISIONS.md`; inspect actual `git status`/`log`/`branch`; quote the last-verified line and report discrepancies before editing; select one task from `.agent/TASKS.md` and read its detail file if linked; implement with tests and incremental commits; leave a truthful handoff. Do not ask the human to re-state decisions already recorded.
+
+## Update cadence
+- `TASKS.md` (and any linked task file): when a task's status or evidence changes.
+- Archive: at phase close or >50 open rows, per the TASKS.md rules.
+- `CURRENT_STATE.md` + `SESSION_HANDOFF.md`: every session.
+- `PROJECT_MEMORY.md` + ADRs: only when a stable decision or invariant changes, in the same PR.
+
+## Anti-drift checks
+At each phase gate, verify actual code matches recorded architecture and invariants. Where prose and repository disagree, the repository is truth: fix the doc (or file an ADR if the code is what's wrong), never quietly the reverse. Unresolved decisions go to `OPEN_DECISIONS.md` — never improvised around.

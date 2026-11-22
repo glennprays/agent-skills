@@ -1,0 +1,29 @@
+# Session Handoff — overwrite only after completing a session
+
+<!--
+Maintenance rules:
+- Overwrite (not append) at session end; this file describes the LATEST session only.
+- Every verification claim must be a command actually run plus its actual result. If no tests ran, state that explicitly.
+- Record what was NOT done as deliberately as what was — the next session starts from the gap.
+- Debug insights that future sessions would otherwise rediscover belong in "Debug notes worth remembering".
+-->
+
+## Session
+Date/time: {{TODAY}}. Agent: {{AGENT}}. Branch: {{BRANCH}}, commits: {{COMMITS}}.
+
+## Objective and scope
+{{OBJECTIVE}}
+
+## Actions taken / evidence
+{{ACTIONS_WITH_EVIDENCE}}
+<!-- Numbered; each action pairs with observed output where verification matters. -->
+
+## Debug notes worth remembering
+{{DEBUG_NOTES}}
+
+## Not done here (explicit)
+{{NOT_DONE}}
+
+## Risks and unresolved questions
+{{RISKS}}
+<!-- Point at CURRENT_STATE "Known risks" and OPEN_DECISIONS rather than duplicating. -->

@@ -1,0 +1,20 @@
+# Prioritized Task Ledger
+
+<!--
+Maintenance rules:
+- Status values: TODO, IN_PROGRESS, BLOCKED, DONE. Update status only with evidence; record PR/commit.
+- A row moves to DONE only when its acceptance criteria are demonstrably met (command output, merged PR, observed behavior).
+- Add details in issues or ADRs, not by inflating this table.
+- BLOCKED rows carry their blocker in the Dependency column or a linked open decision.
+- Detail files: create .agent/tasks/<ID>.md only when a task needs more than its row (evidence log, multi-line acceptance, design discussion). Link it from the Acceptance cell: "— detail: tasks/<ID>.md". Never create empty task files or the directory until the first file exists.
+- Archival: when a phase closes (its last task DONE) or the index exceeds ~50 open rows, move DONE rows whose dependent rows are all DONE or archived into .agent/tasks/archive/<phase-slug-or-YYYY-MM>.md (append; never edit archived history). Move their task files into .agent/tasks/archive/ too. A row lives in exactly one of index or archive — status stays single-sourced.
+-->
+
+| ID | Status | Phase | Slice | Acceptance criteria | Dependency |
+|---|---|---|---|---|---|
+| T-001 | TODO | {{PHASE}} | {{SLICE}} | {{ACCEPTANCE_CRITERIA}} | none |
+
+<!--
+Schema: ID (stable, e.g. P1-03 or T-001), Status, Phase, Slice (one-line objective),
+Acceptance criteria (observable, not "works") (holds pointers — plan path per superpowers coexistence, detail-file link — never prose bodies), Dependency (task IDs or external blockers).
+Seed rows from the user's roadmap; keep IDs stable once assigned.

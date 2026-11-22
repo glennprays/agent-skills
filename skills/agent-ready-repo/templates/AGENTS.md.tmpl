@@ -1,0 +1,45 @@
+# {{REPO_NAME}} — Root Agent Instructions (canonical)
+
+This file applies to all agent sessions and all repo paths. Read `README.md`, `.agent/PROJECT_MEMORY.md`, `.agent/CURRENT_STATE.md`, `.agent/TASKS.md`, `.agent/SESSION_HANDOFF.md`, `docs/decisions/OPEN_DECISIONS.md` in that order. Re-read the relevant doc before modifying its area.
+
+## Non-negotiable behavior
+- **Inspect first.** Locate actual repo state before editing. Documentation describes intent, not proof that code exists.
+- **Plan before coding.** For each task, state objective, files, tests, rollback and acceptance criteria. Keep scope bounded to a PR-sized change.
+- **Never fabricate evidence.** Never claim builds, tests, or external validation unless actually run. Report commands and results.
+- **No blind implementation of unresolved decisions.** Offer a proposed default and record it in `docs/decisions/OPEN_DECISIONS.md`; mark blockers clearly. Preserve user decisions.
+- **No surprise dependency or architectural changes.** Add an ADR for materially consequential change, including alternatives, rationale and migration.
+- **Never alter existing unrelated changes**, force push, rewrite shared history, delete untracked files, or merge to a protected branch without explicit approval.
+- **One coherent concern per commit.** Favor small feature branches and incremental commits.
+- **No secrets or real customer data** in source, logs, snapshots, prompts, fixtures, commits or agent memory.
+
+## Workflow per new session
+1. Load memory and decision files. Compare docs with actual git state (`git status`, `git branch`, `git log`).
+2. Quote `.agent/CURRENT_STATE.md`'s last-verified line and the actual branch/HEAD. Report discrepancies; reconcile before proceeding silently.
+3. Select one actionable item in `.agent/TASKS.md`, state acceptance criteria and dependencies; read its detail file first when the row links one (`tasks/<ID>.md`).
+4. Implement in small vertical slices, tests included. Run the relevant gates from `docs/engineering/`.
+5. Make incremental commits after each independently valid change; no end-of-session bulk commit.
+6. Update state/task/handoff docs accurately. If no tests ran, explicitly say so.
+
+## Boundaries
+{{BOUNDARIES}}
+<!-- One bullet per module/stack, e.g. `- src/server: authoritative domain logic, no presentation code.` -->
+<!-- TODO: confirm boundaries during setup interview. -->
+
+## Artifact authority map
+One home per artifact type; never record the same state in two places.
+- Project state (memory, tasks, handoffs) → `.agent/` only.
+- Decisions → `docs/decisions/`.
+{{SUPERPOWERS_BLOCK}}
+<!-- Keep the block below only when superpowers is in use (docs/superpowers/ exists or the user confirms); otherwise delete this comment and the block. -->
+- Feature specs → `docs/superpowers/specs/` — superpowers' native home; do not duplicate into the docs tiers.
+- Execution plans → `docs/superpowers/plans/`. When a plan tracks a `.agent/TASKS.md` row, put the plan path in that row's cell; the plan holds step-level checkboxes, TASKS.md holds lifecycle status only.
+- Spec section conflicting with an ADR → the ADR wins; fix the spec.
+
+## Grounding rituals
+- **Session start.** Quote `CURRENT_STATE.md`'s last-verified line and actual `git branch`/HEAD before any edit. Report discrepancies instead of proceeding silently.
+- **Session end.** `SESSION_HANDOFF.md` records commands actually run with their actual results — never claimed or expected results. If no tests ran, say so.
+- **Code and git over prose.** Where documentation and the repository disagree, the repository is truth; fix the doc or file an ADR, never the reverse.
+- **Unresolved decisions are not improvisation fuel.** Anything unresolved goes to `docs/decisions/OPEN_DECISIONS.md` with a recommended default; no agent may treat it as decided.
+
+## Quality stop conditions
+Stop and escalate: data loss risk, secrets exposure, broken version compatibility, potentially destructive migration, nondeterministic tests, or divergence from recorded architecture. Do not bypass failing gates to satisfy a deadline.

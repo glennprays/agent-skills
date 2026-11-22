@@ -1,0 +1,28 @@
+# {{STACK_NAME}} Playbook
+
+<!--
+Maintenance rules:
+- The "Verified commands" section records commands that were actually run with observed results.
+  A command never verified stays `TODO: verify` until someone runs it and records the output.
+- Conventions proposed by an agent stay `TODO: confirm` until a human confirms them.
+- When this stack's manifests or CI change, propose a diff to this file; never silently rewrite it.
+-->
+
+## What this stack owns
+{{STACK_SCOPE}}
+<!-- Which directories/modules/packages belong to this stack, and what does NOT belong. -->
+
+## Verified commands
+<!-- Run each command once where feasible; record observed result. Unverified stays TODO. -->
+- Build: `{{BUILD_CMD}}` — {{BUILD_RESULT}}
+- Lint: `{{LINT_CMD}}` — {{LINT_RESULT}}
+- Typecheck: `{{TYPECHECK_CMD}}` — {{TYPECHECK_RESULT}}
+- Test: `{{TEST_CMD}}` — {{TEST_RESULT}}
+
+## Conventions
+{{CONVENTIONS}}
+<!-- Format tool, test layout, migration rules, naming. Propose from ecosystem defaults; TODO: confirm each. -->
+
+## Boundaries
+{{STACK_BOUNDARIES}}
+<!-- What stays inside this stack vs what crosses into other stacks/contracts. -->

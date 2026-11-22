@@ -10,6 +10,7 @@ The Craft Raven carries a seed of reusable knowledge: agents bring capability; s
 | Skill | When to use it |
 |---|---|
 | [design-ui-first](skills/design-ui-first/SKILL.md) | Define user needs, research visual references, compare layouts, and choose a direction before implementing a screen. |
+| [agent-ready-repo](skills/agent-ready-repo/SKILL.md) | Set up or tidy a repo's agent system — memory, tasks, handoffs, decisions, stack playbooks, harness pointers — and reconcile recorded state against git. |
 
 ## Install
 
@@ -18,6 +19,7 @@ Prerequisites: Node.js 22.20 or later. Run the installer from the root of the co
 ~~~sh
 npx --yes skills add glennprays/agent-skills --list
 ~~~
+Replace `--skill design-ui-first` with `--skill agent-ready-repo` (or any catalog skill name) in any command below.
 
 ### Claude Code
 
