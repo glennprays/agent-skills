@@ -11,6 +11,7 @@ The Craft Raven carries a seed of reusable knowledge: agents bring capability; s
 |---|---|
 | [design-ui-first](skills/design-ui-first/SKILL.md) | Define user needs, research visual references, compare layouts, and choose a direction before implementing a screen. |
 | [agent-ready-repo](skills/agent-ready-repo/SKILL.md) | Set up or tidy a repo's agent system — memory, tasks, handoffs, decisions, stack playbooks, harness pointers — and reconcile recorded state against git. |
+| [second-opinion](skills/second-opinion/SKILL.md) | Get an independent review, track findings across sessions, and verify requested fixes against an identified baseline. |
 
 ## Install
 
@@ -87,6 +88,12 @@ This installs to the user root, `~/.claude/skills/` for Claude Code (configured 
 Restart or reopen the chosen agent in the consumer project, then try:
 
 > Use design-ui-first to explore two request inspector layouts. Show me the options before implementation.
+
+> Use second-opinion to investigate this from the evidence independently.
+
+After a requested fix:
+
+> Recheck finding F-01 in the same case against the current change.
 
 Installing the files does not guarantee every agent or model follows the workflow identically.
 
