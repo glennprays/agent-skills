@@ -12,6 +12,7 @@ The Craft Raven carries a seed of reusable knowledge: agents bring capability; s
 | [design-ui-first](skills/design-ui-first/SKILL.md) | Define user needs, research visual references, compare layouts, and choose a direction before implementing a screen. |
 | [agent-ready-repo](skills/agent-ready-repo/SKILL.md) | Set up or tidy a repo's agent system — memory, tasks, handoffs, decisions, stack playbooks, harness pointers — and reconcile recorded state against git. |
 | [second-opinion](skills/second-opinion/SKILL.md) | Get an independent review, track findings across sessions, and verify requested fixes against an identified baseline. |
+| [flight-director](skills/flight-director/SKILL.md) | Shape a direction, make explicit decisions, and guide work as evidence changes while the executor keeps its session. |
 
 ## Install
 
@@ -94,6 +95,8 @@ Restart or reopen the chosen agent in the consumer project, then try:
 After a requested fix:
 
 > Recheck finding F-01 in the same case against the current change.
+
+> Use flight-director to shape this date-filter idea and hand it to my existing executor.
 
 Installing the files does not guarantee every agent or model follows the workflow identically.
 
